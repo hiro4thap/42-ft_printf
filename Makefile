@@ -1,11 +1,11 @@
 SRCS = ft_printf.c \
-	   ft_putchar.c \
-	   ft_putstr.c \
-	   ft_putadr.c \
-	   ft_puthxl.c \
-	   ft_puthxu.c \
-	   ft_putint.c \
-	   ft_putuint.c
+	ft_putchar.c \
+	ft_putstr.c \
+	ft_putadr.c \
+	ft_puthxl.c \
+	ft_puthxu.c \
+	ft_putint.c \
+	ft_putuint.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -29,7 +29,7 @@ makelibft:
 	make -C $(LIBFTDIR)
 	cp $(LIBFTDIR)/$(LIBFTLIB) .
 
-$(NAME):makelibft $(OBJS)
+$(NAME): makelibft $(OBJS)
 	mv $(LIBFTLIB) $(NAME)
 	$(AR) $(NAME) $(OBJS)
 
@@ -38,10 +38,12 @@ $(NAME):makelibft $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	make -C $(LIBFTDIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(LIBFTDIR)/$(LIBFTLIB)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re makelibft
