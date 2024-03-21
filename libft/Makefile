@@ -33,19 +33,19 @@ AR = ar rcs
 all:$(NAME)
 
 $(NAME): $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 bonus: $(OBJS_B)
-	@$(AR) $(NAME) $(OBJS_B) 
+	$(AR) $(NAME) $(OBJS_B) 
 
 .o:.c
-	@$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	@$(RM) $(OBJS) $(OBJS_B) 
+	$(RM) $(OBJS) $(OBJS_B) 
 
 fclean: clean 
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
